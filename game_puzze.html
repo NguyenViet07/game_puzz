@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id ="result">
+    <button id="button0" onclick ="changeImage(0)"></button>
+    <br>
+    <button id="button1" onclick ="changeImage(1)"></button>
+    <br>
+    <button id="button2" onclick ="changeImage(2)"></button>
+</div>
+
+<script type="text/javascript">
+    arr = new Array();
+    arr[0] = ["pig1.jpg","bong1.jpg","oto1.jpg","sutu1.jpg"];
+    arr[1] = ["pig2.jpg","bong2.jpg","oto2.jpg","sutu2.jpg"];
+    arr[2] = ["pig3.jpg","bong3.jpg","oto3.jpg","sutu3.jpg"];
+    for(var i=0;i<3;i++){
+        var buttons = document.getElementById("button"+i);
+        buttons.innerHTML = '<img src="'+arr[i][0]+'" style = "height:100px;"/>';
+        buttons.style.height = "100px";
+        buttons.value = 0;
+    }
+    kiemtra();
+    function kiemtra(){
+        num0 = document.getElementById("button0").value;
+        num1 = document.getElementById("button1").value;
+        num2 = document.getElementById("button2").value;
+        if(num0 == num1 && num0 == num2){
+            //right
+            document.getElementById("result").style.backgroundColor = "green";
+        } else {
+            document.getElementById("result").style.backgroundColor = "red";
+        }
+    }
+    function changeImage(i){
+        button = document.getElementById("button"+i);
+        var x = button.value;
+        console.log("==>"+i+" "+button.value);
+        button.value = (parseInt(button.value)+1)%4;
+        console.log(i+" "+button.value);
+        button.innerHTML = '<img src="'+arr[i][button.value]+'" style = "height:100px;"/>';
+        button.style.height = "100px";
+        kiemtra();
+    }
+</script>
+
+</body>
+</html>
